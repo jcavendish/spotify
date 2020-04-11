@@ -5,13 +5,13 @@ import globalStyles from '../../styles';
 export default function CategorySection({category, render}) {
   return (
     <View style={styles.categorySection}>
-      <Text style={globalStyles.defaultTitle}>{category.title}</Text>
+      <Text style={globalStyles.defaultTitle}>{category.label}</Text>
       <FlatList
         horizontal={true}
         style={styles.imageList}
         data={category.tracks}
-        keyExtractor={(track) => String(track.id)}
-        renderItem={({item: track}) => render(track)}
+        keyExtractor={({record: track}) => track.title}
+        renderItem={({item: track}) => render(track.record)}
       />
     </View>
   );
